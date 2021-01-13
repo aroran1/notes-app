@@ -1,4 +1,6 @@
 const fs = require('fs');
+const validator = require('validator');
+const chalk = require('chalk');
 const getNotes = require('./notes');
 
 // Challenge 1
@@ -9,3 +11,6 @@ fs.appendFileSync('./generated-files/notes.txt', ' Created by- Nidhi Arora');
 
 const msg = getNotes();
 console.log(msg);
+console.log(validator.isEmail("dfdj.sdjhfsd@sdhfhs.com"));
+console.log(chalk.green('Success!'));
+console.log(chalk.blue.bgRed.bold('Hello world!'));
