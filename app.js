@@ -7,4 +7,4 @@ fs.writeFileSync('notes.txt', 'This file is created by node fs!');
 
 // to append use appendFileSync method
 
-fs.appendFileSync('notes.txt', 'Created by- Nidhi Arora');
+fs.appendFileSync('notes.txt', ' Created by- Nidhi Arora');
