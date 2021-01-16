@@ -1,5 +1,8 @@
 const fs = require('fs');
 
+// Original Data
+// {"name":"Nidhi Arora","planet":"Earth","Age":"infinity"}
+
 const bufferData = fs.readFileSync('challenge-1.json'); // reads json data as buffer
 console.log('bufferData', bufferData);
 const parsedData = bufferData.toString(); // converts buffer data to JSON

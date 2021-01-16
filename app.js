@@ -2,18 +2,18 @@ const fs = require('fs');
 const validator = require('validator');
 const chalk = require('chalk');
 const yargs = require('yargs');
-const getNotes = require('./notes');
+const notes = require('./notes');
 
 const greenMsg = chalk.green.inverse.bold('Success!');
 const blueRedMsg = chalk.blue.bgRed.bold('Error!');
 
-// // Challenge 1
-// fs.writeFileSync('./generated-files/notes.txt', 'This file is created by node fs!');
+// // Challenge 0
+// fs.writeFileSync('./generated-files/challengeNotes.txt', 'This file is created by node fs!');
 // // fs.writeFileSync('notes.txt', 'Created by- Nidhi Arora'); Overwites the first line
 // // to append use appendFileSync method
-// fs.appendFileSync('./generated-files/notes.txt', ' Created by- Nidhi Arora');
+// fs.appendFileSync('./generated-files/challengeNotes.txt', ' Created by- Nidhi Arora');
 
-// const msg = getNotes();
+// const msg = notes.getNotes();
 // console.log(msg);
 // console.log(validator.isEmail("dfdj.sdjhfsd@sdhfhs.com"));
 // console.log(greenMsg);
@@ -43,8 +43,9 @@ yargs.command({
     }
   },
   handler: function(argv) {
-    console.log(`Title: ${argv.title}`);
-    console.log(`Body: ${argv.body}`);
+    // console.log(`Title: ${argv.title}`);
+    // console.log(`Body: ${argv.body}`);
+    notes.addNotes(argv.title, argv.body);
   }
 })
 
