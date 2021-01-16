@@ -16,3 +16,11 @@ fs.writeFileSync('1-json.json', bookJson); // creates the json file with the pas
 const parsedData = JSON.parse(bookJson);
 console.log(parsedData);
 console.log(parsedData.author);
+
+// Read a json file and use the data
+const bufferData = fs.readFileSync('1-JSON.json');
+console.log(bufferData);
+const jsonData = bufferData.toString();
+console.log(jsonData);
+const usableJavscriptObj = JSON.parse(jsonData);
+console.log(usableJavscriptObj.author);
