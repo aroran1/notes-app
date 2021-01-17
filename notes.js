@@ -4,6 +4,7 @@ const { title } = require('process');
 
 const success = chalk.bgGreen;
 const error = chalk.bgRed;
+const dataMsg = chalk.grey.bgWhite;
 
 const getNotes = () => {
   // return "Your notes ...";
@@ -11,13 +12,16 @@ const getNotes = () => {
 
 const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNote = notes.filter( note => note.title === title );
-  // const duplicateNote = notes.filter(note => {
+  const duplicateNotes = notes.filter( note => note.title === title );
+  // const duplicateNotes = notes.filter(note => {
   //   return note.title === title;
   // });
+  console.log('duplicateNotes', duplicateNotes);
+  const duplicateNote = notes.find( note => note.title === title );
   console.log('duplicateNote', duplicateNote);
 
-  if (duplicateNote.length === 0) {
+  debugger;
+  if (!duplicateNote) {
     notes.push({
       title,
       body
@@ -49,10 +53,22 @@ const listNotes = () => {
   if( notes.length > 0) {
     console.log(success('Your notes'));
     notes.forEach(note => {
-      console.log(`${note.title} - ${note.body}`);
+      console.log(dataMsg(`${note.title}`));
     });
   } else {
     console.log(error('There is nothing on your list!'));
+  }
+}
+
+const readNotes = (title) => {
+  const notes = loadNotes();
+  const matched = notes.find( note => note.title === title);
+
+  if(matched) {
+    console.log(success('Matched note'));
+    console.log(dataMsg(`${matched.title} - ${matched.body}`));
+  } else {
+    console.log(error('No match found!'));
   }
 }
 
@@ -77,5 +93,6 @@ module.exports = {
   getNotes,
   addNote,
   removeNote,
-  listNotes
+  listNotes,
+  readNotes
 };
