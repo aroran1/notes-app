@@ -6,7 +6,7 @@ const success = chalk.bgGreen;
 const error = chalk.bgRed;
 
 const getNotes = () => {
-  return "Your notes ...";
+  // return "Your notes ...";
 }
 
 const addNote = (title, body) => {
@@ -44,6 +44,18 @@ const removeNote = (title) => {
   }
 }
 
+const listNotes = () => {
+  const notes = loadNotes();
+  if( notes.length > 0) {
+    console.log(success('Your notes'));
+    notes.forEach(note => {
+      console.log(`${note.title} - ${note.body}`);
+    });
+  } else {
+    console.log(error('There is nothing on your list!'));
+  }
+}
+
 const loadNotes = () => {
   try {
     const bufferData = fs.readFileSync('./generated-files/notesData.json');
@@ -64,5 +76,6 @@ const saveNotes = (notes) => {
 module.exports = {
   getNotes,
   addNote,
-  removeNote
+  removeNote,
+  listNotes
 };
