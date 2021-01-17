@@ -2,8 +2,8 @@ const fs = require('fs');
 const chalk = require('chalk');
 const { title } = require('process');
 
-const success = chalk.white.bgGreen;
-const error = chalk.white.bgRed;
+const success = chalk.bgGreen;
+const error = chalk.bgRed;
 
 const getNotes = () => {
   return "Your notes ...";
