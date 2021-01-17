@@ -9,12 +9,13 @@ const getNotes = () => {
   return "Your notes ...";
 }
 
-const addNote = function(title, body) {
+const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNote = notes.filter(note => {
-    return note.title === title;
-  });
-  console.log(duplicateNote);
+  const duplicateNote = notes.filter( note => note.title === title );
+  // const duplicateNote = notes.filter(note => {
+  //   return note.title === title;
+  // });
+  console.log('duplicateNote', duplicateNote);
 
   if (duplicateNote.length === 0) {
     notes.push({
@@ -30,19 +31,20 @@ const addNote = function(title, body) {
 
 const removeNote = (title) => {
   const notes = loadNotes();
-  const notesToKeep = notes.filter(note => {
-    return note.title !== title;
-  });
+  const notesToKeep = notes.filter(note => note.title !== title );
+  // const notesToKeep = notes.filter(note => {
+  //   return note.title !== title;
+  // });
   // console.log(notesToKeep);
   if (notes.length > notesToKeep.length) {
     console.log(success('Note removed!'));
     saveNotes(notesToKeep);
   } else {
-    console.log(success('No match found!'));
+    console.log(error('No match found!'));
   }
 }
 
-const loadNotes = function() {
+const loadNotes = () => {
   try {
     const bufferData = fs.readFileSync('./generated-files/notesData.json');
     const jsonData = bufferData.toString();

@@ -42,7 +42,9 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: function(argv) {
+  // handler: function(argv) {
+  // changing it to ES6 method definition syntax
+  handler(argv) {
     // console.log(`Title: ${argv.title}`);
     // console.log(`Body: ${argv.body}`);
     notes.addNote(argv.title, argv.body);
@@ -53,7 +55,7 @@ yargs.command({
 yargs.command({
   command: 'remove',
   describe: 'Remove a new note',
-  handler: function(argv) {
+  handler(argv) {
     // console.log('Removing the notes!');
     notes.removeNote(argv.title);
   }
@@ -63,7 +65,7 @@ yargs.command({
 yargs.command({
   command: 'list',
   describe: 'List all note',
-  handler: function() {
+  handler() {
     console.log('Listing out all the notes!');
   }
 })
@@ -72,7 +74,7 @@ yargs.command({
 yargs.command({
   command: 'read',
   describe: 'Reading the notes',
-  handler: function() {
+  handler() {
     console.log('Reading the notes!');
   }
 })
