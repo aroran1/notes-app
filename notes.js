@@ -1,20 +1,37 @@
 const fs = require('fs');
+const { title } = require('process');
 
 const getNotes = () => {
   return "Your notes ...";
 }
 
-const addNotes = function(title, body) {
+const addNote = function(title, body) {
   const notes = loadNotes();
-  notes.push({
-    title,
-    body
+  const duplicateNote = notes.filter(note => {
+    return note.title === title;
   });
-  saveNotes(notes);
+  console.log(duplicateNote);
+
+  if (duplicateNote.length === 0) {
+    notes.push({
+      title,
+      body
+    });
+    saveNotes(notes);
+    console.log("Note added");
+  } else {
+    console.log("Note already exist");
+  }
 }
 
-const removeNote = () => {
-  // remove note
+const removeNote = (title) => {
+  const notes = loadNotes();
+  const notesToKeep = notes.filter(note => {
+    return note.title !== title;
+  });
+  console.log(notesToKeep);
+  saveNotes(notesToKeep);
+  console.log("Note removed");
 }
 
 const loadNotes = function() {
@@ -36,5 +53,6 @@ const saveNotes = (notes) => {
 
 module.exports = {
   getNotes,
-  addNotes,
+  addNote,
+  removeNote
 };
